@@ -1,0 +1,6 @@
+print has_no_e("this has an e in it")
+print has_no_e("this dun not"def has_no_e(line):
+    for i in line:
+        if (i == "e"):
+            return false
+    return true

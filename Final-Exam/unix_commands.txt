@@ -3,7 +3,7 @@
 # How would you print the file classlist.csv to the screen
 # except the two header lines?
 # Enter the relevant Unix command(s) used below.
-
+tail -n+3 classlist.csv #printed all but the first 2 lines
 
 
 
@@ -12,8 +12,9 @@
 # to determine how many distinct students are in this list?
 # Enter the relevant Unix command(s) used below as well as the number
 # of students in the list.
+tail -n+3 classlist.csv | wc -l
 
-
+number of students: 130
 
 
 # part (c)
@@ -24,8 +25,14 @@
 # Enter the relevant Unix command(s) used below as well as the names
 # of the first and last students in the new list.
 
+tail -n+3 classlist.csv | cut -b11- | sort
+sort commands -b -d -f -g -i -M -h -n -R -r -V and --sort all don't work.
+I also tried setting a key and using -t
+I have no idea what other sort command exists.
 
+so I used cut to take out the student numbers and sorted than
 
+Adam Holte is top of the list, Zenia Mowrer is the bottom
 
 # part (d)
 # Construct a Unix pipeline involving these functions to determine
@@ -33,7 +40,10 @@
 # repeated in the class list?
 # Enter the relevant name(s) and the Unix command(s) below.
 
+tail -n+3 classlist.csv | cut -b11- | (somehow cut out last names) | uniq -d
 
+this will print all duplicated lines allowing me to answer the other two
+questions.
 
 
 # part (f) [BONUS]
@@ -41,3 +51,5 @@
 # the student number and the first character of the first name to make
 # a four-character identifier for each student.
 # Enter the relevant Unix command(s) used below.
+
+tail -n+3 classlist.csv | cut -b8-12
